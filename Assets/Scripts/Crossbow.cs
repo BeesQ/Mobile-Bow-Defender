@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class Crossbow : MonoBehaviour
 {
+    [SerializeField] GameObject boltPrefab;
+    [SerializeField] Transform shootTransform;
+
     private void Update()
     {
         if (!Touchscreen.current.primaryTouch.press.isPressed) { return; }
@@ -23,6 +26,6 @@ public class Player : MonoBehaviour
 
     private void HandleShooting()
     {
-        
+        var bolt = Instantiate(boltPrefab, shootTransform.position, transform.rotation);
     }
 }
