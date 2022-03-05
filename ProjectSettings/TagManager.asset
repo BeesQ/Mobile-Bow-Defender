@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Player Projectile
   layers:
   - Default
   - TransparentFX
@@ -38,6 +39,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Player
+    uniqueID: 2651689873
+    locked: 0
+  - name: Player Bullet
+    uniqueID: 3441391415
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

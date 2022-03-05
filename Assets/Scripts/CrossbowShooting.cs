@@ -13,6 +13,10 @@ public class CrossbowShooting : MonoBehaviour
     float currentTimeBetweenShots = 0f;
     bool isShooting = false;
 
+    private void Awake()
+    {
+        currentTimeBetweenShots = timeBetweenShots;
+    }
     private void Update()
     {
         HandleTimeShooting();
