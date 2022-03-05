@@ -15,7 +15,7 @@ public static class Helpers
     }
 
     private static readonly Dictionary<float, WaitForSeconds> WaitDictionary = new Dictionary<float, WaitForSeconds>();
-    public static WaitForSeconds GetWait(float  time)
+    public static WaitForSeconds GetWaitInSeconds(float  time)
     {
         if (WaitDictionary.TryGetValue(time, out var wait)) { return wait; }
 

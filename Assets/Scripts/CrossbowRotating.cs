@@ -4,16 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Crossbow : MonoBehaviour
+public class CrossbowRotating : MonoBehaviour
 {
-    [SerializeField] GameObject boltPrefab;
-    [SerializeField] Transform shootTransform;
+    [SerializeField] float rotationSpeed = 100f;
 
     private void Update()
     {
         if (!Touchscreen.current.primaryTouch.press.isPressed) { return; }
         HandleRotating();
-        HandleShooting();
     }
 
     private void HandleRotating()
@@ -21,11 +19,7 @@ public class Crossbow : MonoBehaviour
         Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
         Vector2 worldPosition = Helpers.Camera.ScreenToWorldPoint(touchPosition);
         Vector2 offset = new Vector2(worldPosition.x - transform.position.x, worldPosition.y - transform.position.y);
-        transform.up = offset;
-    }
-
-    private void HandleShooting()
-    {
-        var bolt = Instantiate(boltPrefab, shootTransform.position, transform.rotation);
+        
+        transform.up = Vector2.MoveTowards(transform.up, offset, rotationSpeed);
     }
 }

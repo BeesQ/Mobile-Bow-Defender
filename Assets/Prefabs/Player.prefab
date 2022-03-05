@@ -92,6 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 416125214059090073}
   - component: {fileID: 416125214059090072}
+  - component: {fileID: 4596212056407484788}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -127,8 +128,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d136597936e895549805b75cedb7bf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4596212056407484788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416125214059090078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022e29c8caacef6469309a533adb90fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   boltPrefab: {fileID: 4168311021830585549, guid: 028f23f4e20216f479b0ca2e8ac8af22, type: 3}
   shootTransform: {fileID: 2792460822058683916}
+  timeBetweenShots: 2
 --- !u!1 &2399339362081577777
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2792460822058683916}
   m_Layer: 0
-  m_Name: Shoot Place
+  m_Name: Shooting Place
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
