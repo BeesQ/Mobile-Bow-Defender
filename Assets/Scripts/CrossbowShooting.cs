@@ -10,13 +10,16 @@ public class CrossbowShooting : MonoBehaviour
     [SerializeField] Transform shootTransform;
     [SerializeField] float timeBetweenShots = 2f;
 
+    CrossbowAnimationSystem myAnimationSystem = null;
     float currentTimeBetweenShots = 0f;
     bool isShooting = false;
 
     private void Awake()
     {
         currentTimeBetweenShots = timeBetweenShots;
+        myAnimationSystem = GetComponent<CrossbowAnimationSystem>();
     }
+
     private void Update()
     {
         HandleTimeShooting();
@@ -41,6 +44,9 @@ public class CrossbowShooting : MonoBehaviour
 
     private void ShootBullet()
     {
+        StartCoroutine(myAnimationSystem.Shoot(timeBetweenShots - 0.5f));
         var bolt = Instantiate(boltPrefab, shootTransform.position, transform.rotation);
     }
+
+    // public float GetTimeBetweenShots() => timeBetweenShots;
 }

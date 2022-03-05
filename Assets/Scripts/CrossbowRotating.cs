@@ -8,7 +8,7 @@ public class CrossbowRotating : MonoBehaviour
 {
     [SerializeField] float rotationSpeed = 100f;
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!Touchscreen.current.primaryTouch.press.isPressed) { return; }
         HandleRotating();
