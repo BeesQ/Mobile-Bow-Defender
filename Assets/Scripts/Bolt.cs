@@ -9,10 +9,11 @@ public class Bolt : MonoBehaviour, IDamageable<float>
     [SerializeField] float lifetime = 5f;
     [SerializeField] float damage = 1f;
     [SerializeField] float pierce = 1f;
+    [SerializeField] GameObject deathVFX;
 
     private void Awake()
     {
-        if (lifetime > 0) { StartCoroutine(DestroyProjectile()); }
+        if (lifetime > 0) { StartCoroutine(StartDestroyingProjectile()); }
     }
 
     private void Update()
@@ -20,10 +21,10 @@ public class Bolt : MonoBehaviour, IDamageable<float>
         transform.Translate(Vector2.up * projectileSpeed * Time.deltaTime);
     }
 
-    private IEnumerator DestroyProjectile()
+    private IEnumerator StartDestroyingProjectile()
     {
         yield return Helpers.GetWaitInSeconds(lifetime);
-        Destroy(gameObject);
+        DestroyProjectile();
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -35,10 +36,15 @@ public class Bolt : MonoBehaviour, IDamageable<float>
         TakeDamage(1);
     }
 
-
     public void TakeDamage(float amount)
     {
         pierce -= amount;
-        if (pierce <= 0) { Destroy(gameObject); }
+        if (pierce <= 0) { DestroyProjectile(); }
+    }
+
+    private void DestroyProjectile()
+    {
+        Instantiate(deathVFX, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

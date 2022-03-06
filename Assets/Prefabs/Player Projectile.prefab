@@ -49,6 +49,7 @@ MonoBehaviour:
   lifetime: 5
   damage: 1
   pierce: 1
+  deathVFX: {fileID: 4548485327700304590, guid: f16327e3d05967d4a9d8e2a294c6babc, type: 3}
 --- !u!50 &3499806105243750653
 Rigidbody2D:
   serializedVersion: 4
