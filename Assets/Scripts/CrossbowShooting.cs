@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class CrossbowShooting : MonoBehaviour
 {
@@ -20,20 +19,12 @@ public class CrossbowShooting : MonoBehaviour
         myAnimationSystem = GetComponent<CrossbowAnimationSystem>();
     }
 
-    private void Update()
+    public void HandleTimeShooting()
     {
-        HandleTimeShooting();
-
-        if (!Touchscreen.current.primaryTouch.press.isPressed) { return; }
-        HandleShooting();
+        if (currentTimeBetweenShots <= timeBetweenShots) { currentTimeBetweenShots += Time.deltaTime; }
     }
 
-    private void HandleTimeShooting()
-    {
-        if (currentTimeBetweenShots <= timeBetweenShots) {currentTimeBetweenShots += Time.deltaTime;}
-    }
-
-    private void HandleShooting()
+    public void HandleShooting()
     {
         if (currentTimeBetweenShots >= timeBetweenShots)
         {
