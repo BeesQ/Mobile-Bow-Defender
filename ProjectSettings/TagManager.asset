@@ -49,3 +49,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Enemy Border
+    uniqueID: 177248573
+    locked: 0
+  - name: Enemy
+    uniqueID: 2462649637
+    locked: 0

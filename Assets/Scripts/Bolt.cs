@@ -24,14 +24,14 @@ public class Bolt : MonoBehaviour, IDamageable<float>
     private IEnumerator StartDestroyingProjectile()
     {
         yield return Helpers.GetWaitInSeconds(lifetime);
-        DestroyProjectile();
+        Kill();
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Player") || collider.CompareTag("Player Projectile")) { return; }
 
-        var damageableObject = collider.GetComponent<IDamageable<float>>();
+        var damageableObject = collider.GetComponentInParent<IDamageable<float>>();
         damageableObject.TakeDamage(damage);
         TakeDamage(1);
     }
@@ -39,10 +39,10 @@ public class Bolt : MonoBehaviour, IDamageable<float>
     public void TakeDamage(float amount)
     {
         pierce -= amount;
-        if (pierce <= 0) { DestroyProjectile(); }
+        if (pierce <= 0) { Kill(); }
     }
 
-    private void DestroyProjectile()
+    private void Kill()
     {
         Instantiate(deathVFX, transform.position, Quaternion.identity);
         Destroy(gameObject);
