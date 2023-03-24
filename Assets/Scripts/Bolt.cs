@@ -5,13 +5,19 @@ using UnityEngine;
 
 public class Bolt : MonoBehaviour, IDamageable<int>
 {
-    [SerializeField] float projectileSpeed = 5f;
-    [SerializeField] float lifetime = 5f;
-    [SerializeField] int damage = 1;
-    [SerializeField] int pierce = 1;
     [SerializeField] GameObject deathVFX;
 
-    private void Awake()
+    float projectileSpeed = 5f;
+    float lifetime = 5f;
+
+    public int Damage { get => damage; set => damage = value; }
+    int damage = 1;
+
+    public int Pierce { get => pierce; set => pierce = value; }
+    int pierce = 1;
+
+
+    private void Start()
     {
         if (lifetime > 0) { StartCoroutine(StartDestroyingProjectile()); }
     }
@@ -20,6 +26,14 @@ public class Bolt : MonoBehaviour, IDamageable<int>
     {
         transform.Translate(Vector2.up * projectileSpeed * Time.deltaTime);
     }
+
+    // public void PassStats(float myProjectileSpeed = 5f, float myLifetime = 5f, int myDamage = 1, int myPierce = 1)
+    // {
+    //     projectileSpeed = myProjectileSpeed;
+    //     lifetime = myLifetime;
+    //     damage = myDamage;
+    //     pierce = myPierce;
+    // }
 
     private IEnumerator StartDestroyingProjectile()
     {
@@ -35,14 +49,14 @@ public class Bolt : MonoBehaviour, IDamageable<int>
         if (damageableObject == null) { return; }
 
         Instantiate(deathVFX, transform.position, Quaternion.identity);
-        damageableObject.TakeDamage(damage);
+        damageableObject.TakeDamage(Damage);
         TakeDamage(1);
     }
 
     public void TakeDamage(int amount)
     {
-        pierce -= amount;
-        if (pierce <= 0) { Kill(); }
+        Pierce -= amount;
+        if (Pierce <= 0) { Kill(); }
     }
 
     private void Kill()

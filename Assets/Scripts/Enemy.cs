@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour, IDamageable<int>
     [SerializeField] int health = 1;
     [SerializeField] GameObject deathVFX;
 
-    void Awake()
+    void Start()
     {
         healthText.text = health.ToString();
     }
@@ -18,6 +18,12 @@ public class Enemy : MonoBehaviour, IDamageable<int>
     void Update()
     {
         movementSystem.HandleMovement();
+    }
+
+    public void PassStats(int myHealth = 1)
+    {
+        health = myHealth;
+        healthText.text = health.ToString();
     }
 
     public void TakeDamage(int amount)

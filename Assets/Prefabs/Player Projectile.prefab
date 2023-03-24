@@ -45,11 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe16c8c77ec6054eb5ddfbf20457dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 4596212056407484788, guid: b641bc324bfab484abec2559711d4993, type: 3}
+  deathVFX: {fileID: 4548485327700304590, guid: f16327e3d05967d4a9d8e2a294c6babc, type: 3}
   projectileSpeed: 5
   lifetime: 5
   damage: 2
   pierce: 2
-  deathVFX: {fileID: 4548485327700304590, guid: f16327e3d05967d4a9d8e2a294c6babc, type: 3}
 --- !u!50 &3499806105243750653
 Rigidbody2D:
   serializedVersion: 4

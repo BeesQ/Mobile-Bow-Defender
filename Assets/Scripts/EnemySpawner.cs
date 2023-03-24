@@ -8,7 +8,11 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] Collider2D spawnArea;
     [SerializeField] float spawnDelay = 1f;
 
+    public int EnemyHealth { get => enemyHealth; set => enemyHealth = value; }
+    private int enemyHealth = 1;
+
     private float elapsed;
+
 
     void Update()
     {
@@ -29,6 +33,7 @@ public class EnemySpawner : MonoBehaviour
         );
 
         GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        enemy.GetComponent<Enemy>().PassStats(EnemyHealth);
         enemy.transform.parent = transform;
     }
 }
