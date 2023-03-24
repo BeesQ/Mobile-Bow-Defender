@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable<float>
 {
+    [SerializeField] EnemyMovement movementSystem;
     [SerializeField] float health = 1f;
     [SerializeField] GameObject deathVFX;
+
+    void Update()
+    {
+        movementSystem.HandleMovement();
+    }
 
     public void TakeDamage(float amount)
     {

@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4168311021830585549}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 4168311021833633674}
   m_Father: {fileID: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
   projectileSpeed: 5
   lifetime: 5
   damage: 1
-  pierce: 1
+  pierce: 2
   deathVFX: {fileID: 4548485327700304590, guid: f16327e3d05967d4a9d8e2a294c6babc, type: 3}
 --- !u!50 &3499806105243750653
 Rigidbody2D:
