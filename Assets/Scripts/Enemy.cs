@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour, IDamageable<int>
 
     void Kill()
     {
+        CameraShake.ShakeCamera(0.1f, 0.1f);
         Instantiate(deathVFX, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
