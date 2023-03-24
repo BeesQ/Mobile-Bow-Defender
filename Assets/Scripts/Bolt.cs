@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bolt : MonoBehaviour, IDamageable<float>
+public class Bolt : MonoBehaviour, IDamageable<int>
 {
     [SerializeField] float projectileSpeed = 5f;
     [SerializeField] float lifetime = 5f;
-    [SerializeField] float damage = 1f;
-    [SerializeField] float pierce = 1f;
+    [SerializeField] int damage = 1;
+    [SerializeField] int pierce = 1;
     [SerializeField] GameObject deathVFX;
 
     private void Awake()
@@ -31,12 +31,15 @@ public class Bolt : MonoBehaviour, IDamageable<float>
     {
         if (collider.CompareTag("Player") || collider.CompareTag("Player Projectile")) { return; }
 
-        var damageableObject = collider.GetComponentInParent<IDamageable<float>>();
+        var damageableObject = collider.GetComponentInParent<IDamageable<int>>();
+        if (damageableObject == null) { return; }
+
+        Instantiate(deathVFX, transform.position, Quaternion.identity);
         damageableObject.TakeDamage(damage);
         TakeDamage(1);
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(int amount)
     {
         pierce -= amount;
         if (pierce <= 0) { Kill(); }
@@ -44,7 +47,7 @@ public class Bolt : MonoBehaviour, IDamageable<float>
 
     private void Kill()
     {
-        Instantiate(deathVFX, transform.position, Quaternion.identity);
+        // Instantiate(deathVFX, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
